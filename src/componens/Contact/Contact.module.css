@@ -1,0 +1,21 @@
+.container {
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 400px;
+}
+
+.text {
+  margin: 0;
+  font-size: 500;
+  
+}
+
+.btn {
+     border: 1px solid black;
+  border-radius: 6px;
+}

@@ -1,0 +1,7 @@
+.item {
+    display:flex;
+    max-width: 1200px;
+    flex-direction: column; 
+    gap: 20px;
+   padding: 0;
+}
