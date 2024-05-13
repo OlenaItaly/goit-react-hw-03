@@ -17,7 +17,7 @@ export default function App() {
     const [contacts, setContacts] = useState(dataUser);
     const [filter, setFilter] = useState('');
 
-    function hahdleAddUser(newUser) {
+    function addContact(newUser) {
         console.log(newUser);
         setContacts((prevContacts) => {
             return [...prevContacts, newUser]
@@ -39,9 +39,9 @@ export default function App() {
     return (
       <div className={css.container}>
         <h1>Phonebook</h1>
-        <ContactForm onAdd={hahdleAddUser} />
-            <SearchBox value={filter} onFilter={setFilter } />
-            <ContactList contacts={visibleContacts} onDelete ={deleteContact} />
+        <ContactForm onAdd={addContact} />
+        <SearchBox value={filter} onFilter={setFilter} />
+        <ContactList contacts={visibleContacts} onDelete={deleteContact} />
       </div>
     ); 
 }
