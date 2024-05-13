@@ -1,5 +1,5 @@
 import ContactForm from "../ContactForm/ContactForm";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
 import css from "./App.module.css"
@@ -14,7 +14,12 @@ const dataUser = [
 
 
 export default function App() {
-    const [contacts, setContacts] = useState(dataUser);
+    const [contacts, setContacts] = useState(() => {
+    const saveContacts = localStorage.getItem("contacts");
+    return saveContacts
+      ? JSON.parse(saveContacts)
+      :dataUser;
+  });
     const [filter, setFilter] = useState('');
 
     function addContact(newUser) {
@@ -34,6 +39,10 @@ export default function App() {
 
     const visibleContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()))
         
+   useEffect(() => {
+     localStorage.setItem("contacts", JSON.stringify(contacts));
+   }, [contacts]);
+
     
 
     return (

@@ -35,19 +35,31 @@ export default function ContactForm({ onAdd }) {
         <Form className={css.form}>
           <div className={css.formGroup}>
             <label htmlFor={`${fieldId}-name`}>Name</label>
-            <Field type="text" name="name" id={`${fieldId}-name`} />
+            <Field
+              className={css.input}
+              type="text"
+              name="name"
+              id={`${fieldId}-name`}
+            />
             <ErrorMessage className={css.error} name="name" component="span" />
           </div>
           <div className={css.formGroup}>
             <label htmlFor={`${fieldId}-number`}>Number</label>
-            <Field type="tel" name="number" id={`${fieldId}-number`} />
+            <Field
+              className={css.input}
+              type="tel"
+              name="number"
+              id={`${fieldId}-number`}
+            />
             <ErrorMessage
               className={css.error}
               name="number"
               component="span"
             />
           </div>
-          <button className={css.btn} type="submit">Add contact</button>
+          <button className={css.btn} type="submit">
+            Add contact
+          </button>
         </Form>
       </Formik>
     );
