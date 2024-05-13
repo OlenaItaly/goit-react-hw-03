@@ -4,14 +4,18 @@ import css from "./ContactForm.module.css";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 
-const FeedbackSchema = Yup.object().shape({
+const phoneRegExp = 
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+const ContactsSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
   number: Yup.string()
-    .min(5, "Too Short!")
-    .max(12, "Too Long!")
+    .matches(phoneRegExp, "Phone number is not valid ")
+    .min(6, "Too Short!")
+    .max(14, "Too Long!")
     .required("Required"),
 });
 
@@ -30,7 +34,7 @@ export default function ContactForm({ onAdd }) {
           number: "",
         }}
         onSubmit={handleSubmit}
-        validationSchema={FeedbackSchema}
+        validationSchema={ContactsSchema}
       >
         <Form className={css.form}>
           <div className={css.formGroup}>
